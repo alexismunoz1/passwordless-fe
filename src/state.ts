@@ -1,7 +1,9 @@
-const API_BASE_URL = "https://passwordless-iota.vercel.app";
+const API_BASE_URL = "https://passwordless-iota.vercel.app/api";
 
 export const state = {
-   data: {},
+   data: {
+      email: "",
+   },
 
    getState() {
       return this.data;
@@ -12,24 +14,47 @@ export const state = {
    },
 
    async testApi() {
-      const res = await fetch(`${API_BASE_URL}/api/test`, {
+      const res = await fetch(`${API_BASE_URL}/test`, {
          method: "GET",
          headers: {
             "Content-Type": "application/json",
          },
       });
 
-      return res.json();
+      return await res.json();
    },
 
-   async findOrCreateUser(email: string) {
-      const res = await fetch(`${API_BASE_URL}/api/auth`, {
+   async findOrCreateUser(email: string): Promise<any> {
+      const res = await fetch(`${API_BASE_URL}/auth`, {
          method: "POST",
          headers: {
             "Content-Type": "application/json",
          },
          body: JSON.stringify({
             email,
+         }),
+      });
+
+      this.setState({
+         email,
+      });
+
+      try {
+         return await res.json();
+      } catch (error) {
+         console.log(error);
+      }
+   },
+
+   async login(email: string, code: string): Promise<any> {
+      const res = await fetch(`${API_BASE_URL}/auth/token`, {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify({
+            email,
+            code,
          }),
       });
 
