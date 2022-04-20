@@ -42,13 +42,17 @@ class EmailPage extends HTMLElement {
             border-radius: 4px;
             font-size: 16px;
             font-weight: bold;
-            margin: 0 auto;
+            margin: 0 auto 20px auto;
          }
          .button-email:hover {
             background-color: #222;
          }
          .form-cont {
             display: grid;
+         }
+         .text-mail {
+            color: #7db988;
+            font-weight: bold;
          }`;
    }
 
@@ -66,6 +70,8 @@ class EmailPage extends HTMLElement {
             <input class="input-email" type="email" placeholder="Email" />
             <button class="button-email">Ingresar</button>
          </form>
+         <p>Podrías usar este email de pruebas<br /> 
+         <span class="text-mail">contactodepruebass@gmail.com</span></p>
       </div>
       `;
 

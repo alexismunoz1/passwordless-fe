@@ -61,6 +61,7 @@ class LoginPage extends HTMLElement {
             font-size: 16px;
             margin: 0 auto;
             margin-top: 30px;
+            margin-bottom: 30px;
             cursor: pointer;
          }`;
    }
@@ -82,6 +83,7 @@ class LoginPage extends HTMLElement {
                 <button class="button-code">Continuar</button>
             </form>
             <p class="corregir-email">Corregir email</p>
+            <p>Este sería el código de prueba: <span class="text-mail">91536</span></p>
          </div>`;
 
       this.shadow.querySelector("form")?.addEventListener("submit", async (e) => {
